@@ -1,0 +1,41 @@
+/* trending products section*/
+.trending-products{
+    padding: 2.5rem;
+}
+
+.trending-products-items{
+    margin-top: 2rem;
+    margin-bottom: 5rem;
+    display: flex;
+    justify-content: space-between;
+}
+
+.card{
+    border-radius: 6px;
+    width: 100%;
+}
+
+.card-horizontal-img{
+    height: 7rem;
+}
+
+.btn-card:hover{
+    background-color: var(--primary-hover);
+}
+
+@media screen and (max-width: 1024px){
+    .card{
+        width: 30%;
+    }
+}
+
+@media screen and (max-width: 650px) {
+    .trending-products-items{
+        flex-direction: column;
+    }
+
+    .card{
+        margin-bottom: 2rem;
+        width: 100%;
+    }
+}

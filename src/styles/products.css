@@ -1,0 +1,48 @@
+.products-container{
+    padding-top: 1rem;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem 1rem;
+    padding-right: 1rem;
+    scroll-behavior: smooth;
+}
+
+
+.products-section{
+    background-color: var(--light);
+}
+
+
+/* media queries for different screens */
+
+@media screen and (max-width: 1024px) {
+    .wishlist-container{
+        flex-wrap: wrap;
+    }
+}
+
+@media screen and (max-width: 450px) {
+    .products-container{
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 0.75rem;
+    }
+
+    .wishlist-product-img{
+        height: 7rem;
+        width: 6rem;
+    }
+
+    .products-section{
+        padding: 0.5rem;
+        width: 100%;
+    }
+
+    .product-author{
+        font-size: smaller;
+    }
+
+    .product-name{
+        font-size: smaller;
+    }
+}

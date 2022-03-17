@@ -1,0 +1,25 @@
+.how-to-buy{
+    padding: 2.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: var(--background);
+}
+
+.buy-step{
+    padding: 1rem;
+}
+
+.step-serial{
+    padding-bottom: 1rem;
+}
+
+@media screen and (max-width: 650px) {
+    .how-to-buy{
+        flex-direction: column;
+    }
+    
+    .buy-step{
+        padding-bottom: 2rem;
+    }
+}
