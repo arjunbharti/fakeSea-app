@@ -1,12 +1,16 @@
 import React, { useState, useEffect } from 'react'
-import { products } from '../backend/db/products';
 import Header from './Header'
 import Sidebar from './Sidebar';
 import '../styles/products.css'
 import axios from 'axios';
 import ProductCard from './ProductCard';
+import { useFilters } from '../contexts/filters-context';
+import { getSortedProducts, getFilteredData, filterByCategory, filterByChain, filterByRating } from '../utilities/index'
 
 const Products = () => {
+    const {state} = useFilters();
+    const {sortBy, trending, category, chain, rating} = {...state};
+   
     useEffect(() => {
         getProducts();
     }, [])
@@ -24,7 +28,14 @@ const Products = () => {
             alert(error.message);
         }
     }
-    
+
+    const data = [...products];
+    const sortedProducts = getSortedProducts(data, sortBy);
+    const filtered = getFilteredData(sortedProducts, trending)
+    const filteredProductsByCategory = filterByCategory(filtered, category);
+    const chainData = filterByChain(filteredProductsByCategory, chain)
+    const ratingData = filterByRating(chainData, rating);
+
     return (
     <>
         <Header />
@@ -34,8 +45,8 @@ const Products = () => {
             Explore fake NFT collections
             {loading ? (<p>loading...</p>) : (
                 <div className="products-container">
-                    {products.map((product) => (
-                        <ProductCard product={product}/>
+                    {ratingData.map((product) => (
+                        <ProductCard key={product.id} product={product}/>
                     ))}
                 </div>
             )}        

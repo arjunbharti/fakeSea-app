@@ -10,7 +10,7 @@ export const products = [
     categoryName: "art",
     trending: true,
     chain: "polygon",
-    rating: "4",
+    rating: 4,
     img: "/assets/065_indian.png",
   },
   {
@@ -22,7 +22,7 @@ export const products = [
     categoryName: "art",
     trending: true,
     chain: "polygon",
-    rating: "3",
+    rating: 3,
     img: "/assets/023_indian.png"
   },
   {
@@ -34,7 +34,7 @@ export const products = [
     categoryName: "art",
     trending: false,
     chain: "polygon",
-    rating: "5",
+    rating: 5,
     img: "/assets/043_indian.png"
   },
   {
@@ -46,7 +46,7 @@ export const products = [
     categoryName: "celebrity",
     trending: false,
     chain: "ethereum",
-    rating: "4",
+    rating: 4,
     img: "/assets/1771_elon.jpg"
   },
   {
@@ -58,7 +58,7 @@ export const products = [
     categoryName: "celebrity",
     trending: true,
     chain: "ethereum",
-    rating: "5",
+    rating: 5,
     img: "/assets/2195_elon.jpg"
   },
   {
@@ -70,7 +70,7 @@ export const products = [
     categoryName: "celebrity",
     trending: false,
     chain: "ethereum",
-    rating: "4",
+    rating: 4,
     img: "/assets/2141_elon.jpg"
   },
   {
@@ -82,7 +82,7 @@ export const products = [
     categoryName: "celebrity",
     trending: false,
     chain: "ethereum",
-    rating: "2",
+    rating: 2,
     img: "/assets/1189_elon.jpg"
   },
   {
@@ -94,7 +94,7 @@ export const products = [
     categoryName: "bollywood",
     trending: false,
     chain: "polygon",
-    rating: "5",
+    rating: 5,
     img: "/assets/gabbar.png"
   },
   {
@@ -106,7 +106,7 @@ export const products = [
     categoryName: "bollywood",
     trending: true,
     chain: "polygon",
-    rating: "4",
+    rating: 4,
     img: "/assets/thakur_dream.png"
   },
   {
@@ -118,7 +118,7 @@ export const products = [
     categoryName: "bollywood",
     trending: false,
     chain: "polygon",
-    rating: "5",
+    rating: 5,
     img: "/assets/basanti.png"
   },
   {
@@ -130,7 +130,7 @@ export const products = [
     categoryName: "ticket",
     trending: true,
     chain: "ethereum",
-    rating: "4",
+    rating: 4,
     img: "/assets/2577_bored.png"
   },
   {
@@ -142,7 +142,7 @@ export const products = [
     categoryName: "ticket",
     trending: false,
     chain: "ethereum",
-    rating: "1",
+    rating: 1,
     img: "/assets/5465_bored.png"
   },
   {
@@ -154,7 +154,7 @@ export const products = [
     categoryName: "ticket",
     trending: false,
     chain: "ethereum",
-    rating: "4",
+    rating: 4,
     img: "/assets/4671_bored.png"
   },
   {
@@ -166,7 +166,7 @@ export const products = [
     categoryName: "ticket",
     trending: false,
     chain: "ethereum",
-    rating: "3",
+    rating: 3,
     img: "/assets/8337_bored.png"
   },
   {
@@ -178,7 +178,7 @@ export const products = [
     categoryName: "sports",
     trending: false,
     chain: "ethereum",
-    rating: "4",
+    rating: 4,
     img: "/assets/metaracer.jpeg"
   },
   {
@@ -190,7 +190,7 @@ export const products = [
     categoryName: "sports",
     trending: false,
     chain: "ethereum",
-    rating: "4",
+    rating: 4,
     img: "/assets/metaspeed.jpg"
   },
   {
@@ -202,7 +202,7 @@ export const products = [
     categoryName: "sports",
     trending: true,
     chain: "ethereum",
-    rating: "5",
+    rating: 5,
     img: "/assets/metarise.jpg"
   },
 ];

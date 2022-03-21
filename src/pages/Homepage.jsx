@@ -4,8 +4,7 @@ import Header from './Header'
 import Showcase from './Showcase'
 import BuyerGuide from './BuyerGuide'
 import { Link } from 'react-router-dom'
-import { BrowserRouter as Routes, Route } from 'react-router-dom'
-import Products from './Products'
+
 const Homepage = () => {
     useEffect(() => {
         document.title = "FakeSea | Home"

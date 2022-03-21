@@ -9,8 +9,8 @@ const Cart = () => {
     return (
         <>
             <Header />
-            <p className="cart-title text-l">My cart</p>
-            {/* <section className="cart-container">
+            <p className="cart-title text-l">My cart: </p>
+            <section className="cart-container">
                 <div className="product-card flex-column">
                     <div>
                         <img className="wishlist-product-img" src="../assets/bollywood-gabbar-one.png" alt="nft/img" />
@@ -31,7 +31,7 @@ const Cart = () => {
                         <a className="delete-from-cart-action" href="#">Move to wishlist</a>
                     </div>
                 </div>
-            </section> */}
+            </section>
             <section className='cart-amount-card'>
                 <div className="price-details">
                     <p className="text-m">Price details</p>
@@ -54,7 +54,7 @@ const Cart = () => {
                     </div>
                     <br /><hr />
                     <div className="text-m total-amount flex-row">
-                        <p>Total amount: </p>
+                        <p>Total amount:</p>
                         <p>Rs. 900</p>
                     </div>
                     <a className="place-order" href="#">Place order</a>
