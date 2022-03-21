@@ -39,6 +39,14 @@
     display: none;
 }
 
+.clear-filters{
+    margin-left: 5rem;
+}
+
+.clear-filters:hover {
+    background-color: var(--secondary-hover);
+}
+
 @media screen and (max-width: 450px) {
     .products{
         flex-direction: column;
