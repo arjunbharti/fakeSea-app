@@ -5,6 +5,8 @@ import Products from "./pages/Products";
 import Mockman from 'mockman-js'
 import Cart from "./pages/Cart";
 import Wishlist from "./pages/Wishlist";
+import Login from "./pages/Login";
+import Signup from "./pages/Signup";
 
 function App() {
   return (
@@ -15,6 +17,8 @@ function App() {
         <Route path="/products" element={<Products />} />
         <Route path="/cart" element={<Cart />} />
         <Route path="/wishlist" element={<Wishlist />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/signup" element={<Signup />} />
       </Routes>
     </BrowserRouter>
   );

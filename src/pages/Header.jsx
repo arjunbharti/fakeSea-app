@@ -12,7 +12,7 @@ const Header = () => {
         <input className="nav-search" type="search" placeholder="Search trending NFTs here..." />
         <nav>
             <div className="nav-action-items">
-                <a className="nav-login-action" href="#login">Login</a>
+                <Link className="nav-login-action" to="/login">Login</Link>
                 <Link className="nav-bookmark-action" to="/wishlist"><i className="far fa-heart"><span className="badge-icon">0</span></i></Link>
                 <Link className="nav-cart-action" to="/cart"><i className="fa fa-shopping-cart"><span className="badge-icon">0</span></i></Link>
             </div>
