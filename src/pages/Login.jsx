@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Link, useNavigate, useLocation } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import '../styles/login-and-signup.css'
 import Header from './Header'
 import { useAuth } from '../contexts/auth-context'
@@ -16,8 +16,6 @@ const Login = () => {
     const { email, password, rememberMe } = formData;
     const { saveUserInfo } = useAuth();
     const navigate = useNavigate();
-    const location = useLocation();
-    const from = location.state?.from?.pathname || '/';
 
     const inputHandler = (e) => {
         setFormData((prevFormData) => ({
@@ -76,7 +74,6 @@ const Login = () => {
                     saveUserInfo,
                     setFormData,
                     navigate,
-                    from,
                     formInitialState,
                 })} className="btn-login">Login</a>
                 <Link className="signup-btn" to="/signup">Create new account</Link>

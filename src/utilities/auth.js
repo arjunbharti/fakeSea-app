@@ -2,7 +2,7 @@ import axios from 'axios'
 
 //login handler using email and password
 export const loginHandler = async ({
-    e, email, password, saveUserInfo, setFormData, navigate, from, formInitialState
+    e, email, password, saveUserInfo, setFormData, navigate, formInitialState
 }) => {
     e.preventDefault();
     try {
@@ -13,7 +13,7 @@ export const loginHandler = async ({
         if(status === 200){
             saveUserInfo(data);
             setFormData(formInitialState);
-            navigate(from, { replace: true });
+            navigate('/profile');
         } 
         if(status === 201) {
             alert('Wrong credentials');
