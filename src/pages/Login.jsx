@@ -33,7 +33,17 @@ const Login = () => {
     <>
         <Header />
         <main className="login-page">
-            <form className="login-card flex-column">
+            <form
+                onSubmit={(e) => loginHandler({
+                    e,
+                    email,
+                    password,
+                    saveUserInfo,
+                    setFormData,
+                    navigate,
+                    formInitialState,
+                })}
+                className="login-card flex-column">
                 <p className="text-l login-heading">Login</p>
                 <div className="login-input-field flex-column">
                     <label htmlFor="email" className="email-label">Email address</label>
@@ -67,15 +77,7 @@ const Login = () => {
                     <label htmlFor="remember-me">Remember me</label>
                 </div>
                 <a className="forgot-password" href="#">Forgot your password?</a>
-                <a onClick={(e) => loginHandler({
-                    e,
-                    email,
-                    password,
-                    saveUserInfo,
-                    setFormData,
-                    navigate,
-                    formInitialState,
-                })} className="btn-login">Login</a>
+                <button type='submit' className="btn-login text-sm">Login</button>
                 <Link className="signup-btn" to="/signup">Create new account</Link>
             </form>
         </main>
