@@ -1,7 +1,9 @@
 import React from 'react'
 import '../styles/product-card.css'
+import { useWishlist } from '../contexts/wishlist-context'
 
 const ProductCard = ({product}) => {
+    const { wishlistState, wishlistDispatch } = useWishlist();
   return (
     <div className="product-card flex-column">
         <div>
@@ -20,9 +22,36 @@ const ProductCard = ({product}) => {
         <div className="move-to-cart">
             <a className="move-to-cart-action" href="#">Add to cart</a>
         </div>
-        <div className="move-to-cart">
-            <a className="delete-from-cart-action" href="#">Wishlist this NFT</a>
-        </div>
+        {wishlistState.wishlist.find((item) => item.id === product.id) ? (
+            <div className="move-to-cart">
+                <a 
+                    className="delete-from-cart-action" 
+                    onClick={() => 
+                        wishlistDispatch({ 
+                            type: "remove-from-wishlist", 
+                            payload: product
+                        })
+                    }
+                >
+                    Remove from wishlist
+                </a>
+            </div>
+        ) : (
+            <div className="move-to-cart">
+                <a 
+                    className="delete-from-cart-action" 
+                    onClick={() => 
+                        wishlistDispatch({
+                            type: "add-to-wishlist",
+                            payload: product
+                        })
+                    }
+                >
+                    Wishlist this NFT
+                </a>
+            </div>
+        )}
+       
     </div>
   )
 }
