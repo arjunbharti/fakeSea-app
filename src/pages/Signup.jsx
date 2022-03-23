@@ -1,5 +1,3 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
 import '../styles/login-and-signup.css'
 import Header from './Header'
 
@@ -8,7 +6,7 @@ const Signup = () => {
     <>
         <Header />
         <main class="login-page">
-            <div class="signup-card flex-column">
+            <form class="signup-card flex-column">
                 <p class="text-l login-heading">Sign up</p>
                 <div class="login-input-field flex-column"> 
                     <label for="first-name" class="name-label">First Name</label> 
@@ -45,17 +43,9 @@ const Signup = () => {
                         placeholder="Enter your password"
                     />
                 </div>
-                <div class="login-input-field flex-column">
-                    <label for="" class="password-label">Confirm Password</label>
-                    <input 
-                        type="password" 
-                        class="input-class"
-                        placeholder="Confirm your password"
-                    />
-                </div>
-                <a href="#" class="btn-login">Sign up</a>
+                <a className="btn-login">Sign up</a>
                 <Link class="signup-btn" to="/login">Already have an account?  <br />Login Now </Link>
-            </div>
+            </form>
         </main>
     </>
   )

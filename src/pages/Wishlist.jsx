@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react'
 import Header from './Header'
 import '../styles/wishlist.css'
+import { useAuth } from '../contexts/auth-context'
 const Wishlist = () => {
     useEffect(() => {
         document.title = 'Wishlist | FakeSea'
