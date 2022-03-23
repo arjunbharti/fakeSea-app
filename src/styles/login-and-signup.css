@@ -38,6 +38,8 @@
     color: var(--light);
     border-radius: 4px;
     margin-bottom: 1.25rem;
+    cursor: pointer;
+    border: var(--light);
 }
 
 .forgot-password{
