@@ -58,6 +58,7 @@
     border-radius: 4px;
     display: block;
     width: 100%;
+    cursor: pointer;
 }
 
 .delete-from-cart-action{
@@ -67,6 +68,21 @@
     border-radius: 4px;
     display: block;
     width: 100%;
+    cursor: pointer;
+}
+
+.empty-wishlist{
+    padding-top: 3rem;
+    justify-content: center;
+}
+
+.empty-wishlist-text{
+    padding-top: 3rem;
+}
+
+.empty-wishlist-photo{
+    width: 400px;
+    height: 300px;
 }
 
 /* media queries for different screens */
