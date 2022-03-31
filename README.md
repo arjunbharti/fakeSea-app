@@ -11,7 +11,7 @@ Sorry web3, hello web2 😜
 ![label](https://img.shields.io/badge/label-open--source-blue)
 
 #### Deployment Status Check: <br />
-
+[![Netlify Status](https://api.netlify.com/api/v1/badges/2c85a0d0-3c79-4ca0-8b3a-b1c3ea478b86/deploy-status)](https://app.netlify.com/sites/fakesea-app/deploys)
 
 ## Run locally:
 
