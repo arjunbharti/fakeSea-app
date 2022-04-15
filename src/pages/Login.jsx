@@ -3,47 +3,44 @@ import { Link, useNavigate } from 'react-router-dom'
 import '../styles/login-and-signup.css'
 import Header from './Header'
 import { useAuth } from '../contexts/auth-context'
-import { loginHandler } from '../utilities/auth'
-
-const formInitialState = {
-    email: '',
-    password: '',
-    rememberMe: false,
-}
+import axios from 'axios'
 
 const Login = () => {
-    const [formData, setFormData] = useState(formInitialState);
-    const { email, password, rememberMe } = formData;
-    const { saveUserInfo } = useAuth();
+    const [formData, setFormData] = useState({
+        email: "arjun@gmail.com",
+        password: "arjun123"
+    });
+    const { userInfo, setUserInfo } = useAuth();
     const navigate = useNavigate();
 
-    const inputHandler = (e) => {
-        setFormData((prevFormData) => ({
-            ...prevFormData,
-            [e.target.name]: e.target.value,
-        }))
+    const loginHandler = async({email, password}) => {
+        try{
+          const {data : {encodedToken}} = await axios.post("/api/auth/login", {
+            email: email,
+            password: password,
+          })
+          localStorage.setItem("token", encodedToken)
+          setUserInfo({...userInfo, 
+            authToken : encodedToken,
+            userStatus : true
+          })
+          navigate("/")
+        } catch(error){
+          console.log(error.message)
+        }
     }
-    const handleToggle = (e) => {
-        setFormData((prevFormData) => ({
-            ...prevFormData,
-            [e.target.name]: e.target.checked
-        }))
-    }
+
   return (
     <>
         <Header />
         <main className="login-page">
             <form
-                onSubmit={(e) => loginHandler({
-                    e,
-                    email,
-                    password,
-                    saveUserInfo,
-                    setFormData,
-                    navigate,
-                    formInitialState,
-                })}
-                className="login-card flex-column">
+                onSubmit={(e) => {
+                    e.preventDefault();
+                    loginHandler(formData)
+                }}
+                className="login-card flex-column"
+            >
                 <p className="text-l login-heading">Login</p>
                 <div className="login-input-field flex-column">
                     <label htmlFor="email" className="email-label">Email address</label>
@@ -52,8 +49,7 @@ const Login = () => {
                             name="email"
                             className="input-class"
                             placeholder="Enter your email here"
-                            onChange={inputHandler}
-                            value={email}
+                            onChange = {(e) => setFormData({...formData, email : e.target.value})}
                     />
                 </div>
                 <div className="login-input-field flex-column">
@@ -63,21 +59,19 @@ const Login = () => {
                             name="password"
                             className="input-class"
                             placeholder="Enter your password"
-                            onChange={inputHandler}
-                            value={password}
+                            onChange = {(e) => setFormData({...formData, password : e.target.value})}
                     />
                 </div>
                 <div>
                     <input 
                         type="checkbox" 
                         id="remember-me" 
-                        onChange={handleToggle}
-                        value={rememberMe}
                     />
                     <label htmlFor="remember-me">Remember me</label>
                 </div>
                 <a className="forgot-password" href="#">Forgot your password?</a>
                 <button type='submit' className="btn-login text-sm">Login</button>
+                <button onClick={(e) => loginHandler({ email: "arjun@gmail.com", password: "arjun123" })} className="btn-login text-sm">Guest Login</button>
                 <Link className="signup-btn" to="/signup">Create new account</Link>
             </form>
         </main>

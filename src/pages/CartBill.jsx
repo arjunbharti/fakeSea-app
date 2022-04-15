@@ -2,13 +2,15 @@ import React from 'react'
 import { useCart } from '../contexts/cart-context'
 
 const CartBill = () => {
-    const {cartItems} = useCart();
+    const {cartItemsState} = useCart();
+    const { cartProducts } = cartItemsState;
     //reduce method to count the total amount in the cart
-    const cartAmountReducer = (previous, current) => previous + (current.quantity*current.price);
-    const cartTotalAmount = cartItems.cartProducts.reduce(cartAmountReducer, 0);
+    const cartAmountReducer = (previous, current) => previous + (current.qty*current.price);
+    const cartTotalAmount = cartProducts.reduce(cartAmountReducer, 0);
     //reduce method to count the total number of products in the cart
-    const itemsInCartReducer = (previous, current) => previous+current.quantity;
-    const totalItemsInCart = cartItems.cartProducts.reduce(itemsInCartReducer, 0);
+    const itemsInCartReducer = (previous, current) => previous+current.qty;
+    const totalItemsInCart = cartItemsState.cartProducts.reduce(itemsInCartReducer, 0);
+
   return (
     <div className="price-details">
         <p className="text-m">Price details</p>
