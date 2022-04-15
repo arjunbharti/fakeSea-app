@@ -9,13 +9,16 @@ const Cart = () => {
     useEffect(() => {
         document.title = "Cart | FakeSea"
     }, [])
-    const {cartItems} = useCart();
+    const {cartItemsState, cartItemsDispatch} = useCart();
+    const { cartProducts } = cartItemsState;
+    const qtyReducer = (prev, curr) => curr.qty + prev;
+    const cartProductsQty = cartProducts.reduce(qtyReducer, 0);
     return (
         <>
             <Header />
-            <p className="cart-title text-l">My cart: </p>
+            <p className="cart-title text-l">My cart: ({cartProductsQty})</p>
             <section className="cart-container">
-                {cartItems.cartProducts.map((item) => {
+                {cartProducts.map((item) => {
                     return <CartCard key={item.id} item={item} />
                 })}
             </section>

@@ -3,25 +3,22 @@ export function cartReducer(state, action){
         case "add-to-cart":
             return {
                 ...state,
-                cartProducts: [...state.cartProducts, 
-                    { ...action.payload, quantity: 1 }
-                ]
+                cartProducts: action.payload
             }
         case "remove-from-cart":
-            const removeProducts = state.cartProducts.filter((item) => item.id !== action.payload.id);
             return {
                 ...state,
-                cartProducts: removeProducts
+                cartProducts: [...state.cartProducts.filter((item) => item._id !== action.payload._id)]
             }
-        case "item-increment":
+        case "set-cart":
             return {
                 ...state,
-                cartProducts: state.cartProducts.map((item) => item.id === action.payload.id ? { ...item, quantity: item.quantity + 1 } : item )
+                cartProducts:  action.payload
             }
-        case "item-decrement":
+        case "update-cart":
             return {
                 ...state,
-                cartProducts: state.cartProducts.map((item) => item.id === action.payload.id ? { ...item, quantity: item.quantity > 1 ? item.quantity - 1 : item.quantity } : item )
+                updateCart: state.updateCart + 1
             }
         default:
             return { ...state };

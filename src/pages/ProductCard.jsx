@@ -2,10 +2,18 @@ import React from 'react'
 import '../styles/product-card.css'
 import { useWishlist } from '../contexts/wishlist-context'
 import { useCart } from '../contexts/cart-context'
+import { useAuth } from '../contexts/auth-context'
+import { addProductToWishlist, deleteProductFromWishlist } from '../utilities/wishlist'
+import { useNavigate } from 'react-router-dom'
+import { addProductToCart, deleteProductFromCart } from '../utilities/cart'
 
 const ProductCard = ({product}) => {
     const { wishlistState, wishlistDispatch } = useWishlist();
-    const { cartItems, setCartItems } = useCart();
+    const { wishlist } = wishlistState;
+    const { cartItemsState, cartItemsDispatch } = useCart();
+    const { userInfo } = useAuth();
+    const { authToken, userStatus } = userInfo;
+    const navigate = useNavigate();
   return (
     <div className="product-card flex-column">
         <div>
@@ -21,12 +29,12 @@ const ProductCard = ({product}) => {
             <p>Rs. {product.price}</p>
             <p>{product.rating} <i className="fa-regular fa-star"></i></p>
         </div>
-        {cartItems.cartProducts.find((item) => item.id === product.id) ? 
+        {cartItemsState.cartProducts.find((item) => item.id === product.id) ? 
         (
             <div className="move-to-cart">
                 <a 
                     className="move-to-cart-action" 
-                    onClick={() => setCartItems({ type: "remove-from-cart", payload: product })}
+                    onClick={() => deleteProductFromCart(product, cartItemsDispatch, authToken)}
                 >
                     Remove from cart
                 </a>
@@ -35,22 +43,25 @@ const ProductCard = ({product}) => {
             <div className="move-to-cart">
                 <a 
                     className="move-to-cart-action" 
-                    onClick={() => setCartItems({ type: "add-to-cart", payload: product })}
+                    onClick={() => {
+                        if(userStatus) {
+                            addProductToCart(product, cartItemsDispatch, authToken)
+                        } else {
+                            navigate('/login')
+                        }
+                    }}
                 >
                     Add to cart
                 </a>
             </div>
         )}
         
-        {wishlistState.wishlist.find((item) => item.id === product.id) ? (
+        {wishlist.find((item) => item.id === product.id) ? (
             <div className="move-to-cart">
                 <a 
                     className="delete-from-cart-action" 
                     onClick={() => 
-                        wishlistDispatch({ 
-                            type: "remove-from-wishlist", 
-                            payload: product
-                        })
+                        deleteProductFromWishlist(product, wishlistDispatch, authToken, userStatus)
                     }
                 >
                     Remove from wishlist
@@ -60,11 +71,13 @@ const ProductCard = ({product}) => {
             <div className="move-to-cart">
                 <a 
                     className="delete-from-cart-action" 
-                    onClick={() => 
-                        wishlistDispatch({
-                            type: "add-to-wishlist",
-                            payload: product
-                        })
+                    onClick={() => {
+                        if(userStatus){
+                            addProductToWishlist(product, wishlistDispatch, authToken, userStatus)
+                        } else {
+                            navigate('/login');
+                        }
+                    }
                     }
                 >
                     Wishlist this NFT

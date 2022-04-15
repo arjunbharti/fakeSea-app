@@ -1,16 +1,14 @@
 export function wishlistReducer(state, action) {
     switch(action.type){
-        case "get-wishlisted-products":
+        case "set-product-id":
             return { 
                 ...state,
-                wishlist: action.payload
+                productCount: state.productCount + 1
             }
         case "add-to-wishlist":
             return {
                 ...state,
-                wishlist: [...state.wishlist, 
-                    {...action.payload, inWishlist: true}
-                ]
+                wishlist: action.payload
             }
         case "remove-from-wishlist":
             return {
